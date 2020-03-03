@@ -1,17 +1,24 @@
-﻿internal class StandardFactory : ICarFactory
+﻿using AbstractFactory.Suspension;
+using AbstractFactory.Wheel;
+using AbstractFactory.Engine;
+
+namespace AbstractFactory.Factory
 {
-    public IEngine CreateEngine()
+    internal class StandardFactory : ICarFactory
     {
-        return new StandardEngine();
-    }
+        public IEngine CreateEngine()
+        {
+            return new StandardEngine();
+        }
 
-    public IWheel CreateWheel()
-    {
-        return new StandardWheel();
-    }
+        public IWheel CreateWheel()
+        {
+            return new StandardWheel();
+        }
 
-    public ISuspension CreateSuspension()
-    {
-        return new StandardSuspension();
+        public ISuspension CreateSuspension()
+        {
+            return new StandardSuspension();
+        }
     }
 }

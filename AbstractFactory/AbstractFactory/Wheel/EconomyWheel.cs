@@ -1,7 +1,10 @@
-﻿internal class EconomyWheel : IWheel
+﻿namespace AbstractFactory.Wheel
 {
-    public void DoMove()
+    internal class EconomyWheel : IWheel
     {
+        public void DoMove()
+        {
 
+        }
     }
 }

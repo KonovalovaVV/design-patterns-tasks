@@ -1,7 +1,10 @@
-﻿internal class EconomyEngine : IEngine
+﻿namespace AbstractFactory.Engine
 {
-    public bool Start()
+    internal class EconomyEngine : IEngine
     {
-        return true;
+        public bool Start()
+        {
+            return true;
+        }
     }
 }

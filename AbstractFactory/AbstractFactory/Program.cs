@@ -1,14 +1,15 @@
-﻿namespace AbstractFactory
+﻿using AbstractFactory.Constants;
+using AbstractFactory.Factory;
+
+namespace AbstractFactory
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Car CurrentCar;
-            ICarFactory CurrentFactory;
             CarConfig CurrentConfig = CarConfig.Standard;
-            CurrentFactory = GetCarFactory(CurrentConfig);
-            CurrentCar = new Car(CurrentFactory);
+            ICarFactory currentFactory = GetCarFactory(CurrentConfig);
+            Car currentCar = new Car(currentFactory);
         }
 
         private static ICarFactory GetCarFactory(CarConfig carConfig)

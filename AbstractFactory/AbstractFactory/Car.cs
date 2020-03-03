@@ -1,19 +1,27 @@
-﻿internal class Car
+﻿using AbstractFactory.Suspension;
+using AbstractFactory.Wheel;
+using AbstractFactory.Engine;
+using AbstractFactory.Factory;
+
+
+namespace AbstractFactory
 {
-    public ISuspension Suspension { get; }
-    public IWheel Wheel { get; }
-    public IEngine Engine { get; }
-
-    public Car(ICarFactory factory)
+    internal class Car
     {
-        Engine = factory.CreateEngine();
-        Wheel = factory.CreateWheel();
-        Suspension = factory.CreateSuspension();
-    }
+        public ISuspension Suspension { get; }
+        public IWheel Wheel { get; }
+        public IEngine Engine { get; }
 
-    public bool Start()
-    {
-        return Engine.Start();
-    }
+        public Car(ICarFactory factory)
+        {
+            Engine = factory.CreateEngine();
+            Wheel = factory.CreateWheel();
+            Suspension = factory.CreateSuspension();
+        }
 
+        public bool Start()
+        {
+            return Engine.Start();
+        }
+    }
 }

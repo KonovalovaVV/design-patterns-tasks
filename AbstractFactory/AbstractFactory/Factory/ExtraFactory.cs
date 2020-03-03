@@ -1,17 +1,24 @@
-﻿internal class ExtraFactory : ICarFactory
+﻿using AbstractFactory.Suspension;
+using AbstractFactory.Wheel;
+using AbstractFactory.Engine;
+
+namespace AbstractFactory.Factory
 {
-    public IEngine CreateEngine()
+    internal class ExtraFactory : ICarFactory
     {
-        return new ExtraEngine();
-    }
+        public IEngine CreateEngine()
+        {
+            return new ExtraEngine();
+        }
 
-    public IWheel CreateWheel()
-    {
-        return new ExtraWheel();
-    }
+        public IWheel CreateWheel()
+        {
+            return new ExtraWheel();
+        }
 
-    public ISuspension CreateSuspension()
-    {
-        return new ExtraSuspension();
+        public ISuspension CreateSuspension()
+        {
+            return new ExtraSuspension();
+        }
     }
 }

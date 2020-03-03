@@ -1,6 +1,9 @@
-﻿internal enum CarConfig
+﻿namespace AbstractFactory.Constants
 {
-    Economy = 1, 
-    Standard, 
-    Extra
-} 
+    internal enum CarConfig
+    {
+        Economy = 1,
+        Standard,
+        Extra
+    }
+}

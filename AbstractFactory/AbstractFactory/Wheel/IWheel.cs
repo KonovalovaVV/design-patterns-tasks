@@ -1,4 +1,7 @@
-﻿internal interface IWheel
+﻿namespace AbstractFactory.Wheel
 {
-    void DoMove();
+    internal interface IWheel
+    {
+        void DoMove();
+    }
 }

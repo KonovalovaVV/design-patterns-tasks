@@ -1,17 +1,24 @@
-﻿internal class EconomyFactory : ICarFactory
+﻿using AbstractFactory.Suspension;
+using AbstractFactory.Wheel;
+using AbstractFactory.Engine;
+
+namespace AbstractFactory.Factory
 {
-    public IEngine CreateEngine()
+    internal class EconomyFactory : ICarFactory
     {
-        return new EconomyEngine();
-    }
+        public IEngine CreateEngine()
+        {
+            return new EconomyEngine();
+        }
 
-    public IWheel CreateWheel()
-    {
-        return new EconomyWheel();
-    }
+        public IWheel CreateWheel()
+        {
+            return new EconomyWheel();
+        }
 
-    public ISuspension CreateSuspension()
-    {
-        return new EconomySuspension();
+        public ISuspension CreateSuspension()
+        {
+            return new EconomySuspension();
+        }
     }
 }

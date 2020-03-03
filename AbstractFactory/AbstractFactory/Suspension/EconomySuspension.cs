@@ -1,4 +1,7 @@
-﻿internal class EconomySuspension : ISuspension
+﻿namespace AbstractFactory.Suspension
 {
+    internal class EconomySuspension : ISuspension
+    {
 
+    }
 }

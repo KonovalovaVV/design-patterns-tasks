@@ -1,7 +1,10 @@
-﻿internal class StandardWheel : IWheel
+﻿namespace AbstractFactory.Wheel
 {
-    public void DoMove()
+    internal class StandardWheel : IWheel
     {
+        public void DoMove()
+        {
 
+        }
     }
 }

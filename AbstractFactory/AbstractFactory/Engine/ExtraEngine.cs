@@ -1,7 +1,10 @@
-﻿internal class ExtraEngine : IEngine
+﻿namespace AbstractFactory.Engine
 {
-    public bool Start()
+    internal class ExtraEngine : IEngine
     {
-        return true;
+        public bool Start()
+        {
+            return true;
+        }
     }
 }

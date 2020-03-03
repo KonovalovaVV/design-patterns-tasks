@@ -1,4 +1,7 @@
-﻿internal interface ISuspension
+﻿namespace AbstractFactory.Suspension
 {
+    internal interface ISuspension
+    {
 
+    }
 }

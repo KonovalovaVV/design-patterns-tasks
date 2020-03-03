@@ -1,4 +1,7 @@
-﻿internal class ExtraSuspension : ISuspension
+﻿namespace AbstractFactory.Suspension
 {
+    internal class ExtraSuspension : ISuspension
+    {
 
+    }
 }

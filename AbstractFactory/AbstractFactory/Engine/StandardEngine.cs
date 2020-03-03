@@ -1,7 +1,10 @@
-﻿internal class StandardEngine : IEngine
+﻿namespace AbstractFactory.Engine
 {
-    public bool Start()
+    internal class StandardEngine : IEngine
     {
-        return true;
+        public bool Start()
+        {
+            return true;
+        }
     }
 }

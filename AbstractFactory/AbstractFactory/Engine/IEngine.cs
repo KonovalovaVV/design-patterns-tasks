@@ -1,4 +1,7 @@
-﻿internal interface IEngine
+﻿namespace AbstractFactory.Engine
 {
-    bool Start();
+    internal interface IEngine
+    {
+        bool Start();
+    }
 }
