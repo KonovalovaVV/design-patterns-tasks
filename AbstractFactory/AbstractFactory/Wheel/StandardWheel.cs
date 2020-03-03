@@ -1,4 +1,4 @@
-﻿internal class EconomyWheel : IWheel
+﻿internal class StandardWheel : IWheel
 {
     public void DoMove()
     {

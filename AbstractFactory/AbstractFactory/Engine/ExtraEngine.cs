@@ -1,8 +1,6 @@
-﻿using System;
-
-internal class ExtraEngine : Engine
+﻿internal class ExtraEngine : IEngine
 {
-    public bool start()
+    public bool Start()
     {
         return true;
     }

@@ -1,8 +1,6 @@
-﻿using System;
-
-internal class ExtraWheel : Wheel
+﻿internal class ExtraWheel : IWheel
 {
-    public void doMove()
+    public void DoMove()
     {
 
     }

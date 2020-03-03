@@ -1,24 +1,19 @@
-﻿using System;
-
-internal class Car
+﻿internal class Car
 {
-    CarFactory factory;
-    Suspension suspension;
-    Wheel wheel;
-    Engine engine;
-    public Car(CarFactory f)
+    public ISuspension Suspension { get; }
+    public IWheel Wheel { get; }
+    public IEngine Engine { get; }
+
+    public Car(ICarFactory factory)
     {
-        factory = f;
+        Engine = factory.CreateEngine();
+        Wheel = factory.CreateWheel();
+        Suspension = factory.CreateSuspension();
     }
-    public void createCar()
+
+    public bool Start()
     {
-        engine = factory.createEngine();
-        wheel = factory.createWheel();
-        suspension = factory.createSuspension();
-    }
-    public bool start()
-    {
-        return engine.start();
+        return Engine.Start();
     }
 
 }

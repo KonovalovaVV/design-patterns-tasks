@@ -1,6 +1,4 @@
-﻿using System;
-
-internal class ExtraSuspension : Suspension
+﻿internal class ExtraSuspension : ISuspension
 {
 
 }

@@ -1,16 +1,16 @@
-﻿using System;
-
-internal class EconomyFactory : CarFactory
+﻿internal class EconomyFactory : ICarFactory
 {
-    public Engine createEngine()
+    public IEngine CreateEngine()
     {
         return new EconomyEngine();
     }
-    public Wheel createWheel()
+
+    public IWheel CreateWheel()
     {
         return new EconomyWheel();
     }
-    public Suspension createSuspension()
+
+    public ISuspension CreateSuspension()
     {
         return new EconomySuspension();
     }

@@ -1,31 +1,29 @@
-﻿using System;
-
-namespace AbstractFactory
+﻿namespace AbstractFactory
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Car currentCar;
-            CarFactory currentFactory;
-            config currentConfig = config.standart;
-            switch(currentConfig)
-            {
-                case config.economy:
-                    currentFactory = new EconomyFactory();
-                    break;
-                case config.standart:
-                    currentFactory = new StandartFactory();
-                    break;
-                case config.extra:
-                    currentFactory = new ExtraFactory();
-                    break;
-                default:
-                    currentFactory = new EconomyFactory();
-                    break;
-            }
-            currentCar = new Car(currentFactory);
+            Car CurrentCar;
+            ICarFactory CurrentFactory;
+            CarConfig CurrentConfig = CarConfig.Standard;
+            CurrentFactory = GetCarFactory(CurrentConfig);
+            CurrentCar = new Car(CurrentFactory);
+        }
 
+        private static ICarFactory GetCarFactory(CarConfig carConfig)
+        {
+            switch (carConfig)
+            {
+                case CarConfig.Economy:
+                    return new EconomyFactory();
+                case CarConfig.Standard:
+                    return new StandardFactory();
+                case CarConfig.Extra:
+                    return new ExtraFactory();
+                default:
+                    throw new System.Exception($"It's not possible to create a car factory for the type {carConfig}");
+            }
         }
     }
 

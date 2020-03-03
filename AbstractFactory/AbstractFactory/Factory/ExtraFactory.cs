@@ -1,16 +1,16 @@
-﻿using System;
-
-internal class ExtraFactory : CarFactory
+﻿internal class ExtraFactory : ICarFactory
 {
-    public Engine createEngine()
+    public IEngine CreateEngine()
     {
         return new ExtraEngine();
     }
-    public Wheel createWheel()
+
+    public IWheel CreateWheel()
     {
         return new ExtraWheel();
     }
-    public Suspension createSuspension()
+
+    public ISuspension CreateSuspension()
     {
         return new ExtraSuspension();
     }

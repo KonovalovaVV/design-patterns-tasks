@@ -1,6 +1,4 @@
-﻿using System;
-
-internal class EconomySuspension : Suspension
+﻿internal class EconomySuspension : ISuspension
 {
 
 }

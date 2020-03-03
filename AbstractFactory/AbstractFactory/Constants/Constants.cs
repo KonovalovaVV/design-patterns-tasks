@@ -1,6 +1,6 @@
-﻿using System;
-
-internal enum config
+﻿internal enum CarConfig
 {
-    economy, standart, extra
-}
+    Economy = 1, 
+    Standard, 
+    Extra
+} 

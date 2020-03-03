@@ -1,4 +1,4 @@
-﻿internal class EconomyEngine : IEngine
+﻿internal class StandardEngine : IEngine
 {
     public bool Start()
     {
