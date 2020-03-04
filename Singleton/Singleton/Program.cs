@@ -1,4 +1,6 @@
-﻿namespace Singleton
+﻿using Singleton.DataBase;
+
+namespace Singleton
 {
     class Program
     {
@@ -6,8 +8,9 @@
         {
             try
             {
-                DataBase dataBase = DataBase.GetInstance();
-                dataBase.CreateCommand("INSERT INTO Users (Name, Age) VALUES ('Tom', 18)");
+                DbConnection dataBase = DbConnection.GetInstance("AppSettings.json", "Settings");
+                DbCommandExecutor commandExecutor = new DbCommandExecutor(dataBase);
+                commandExecutor.CreateCommand("INSERT INTO Users (Name, Age) VALUES ('Tom', 18)");
             }
             catch (System.Exception ex)
             {
