@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Data.SqlClient;
-using System.IO;
-using Microsoft.Extensions.Configuration;
 
 namespace Singleton.DataBase
 {
-    class DbConnection
+    internal class DbConnection
     {
         private static readonly Lazy<DbConnection> Instance = 
             new Lazy<DbConnection>(() => new DbConnection(_tempFileName, _tempSectionName) );
@@ -19,25 +17,15 @@ namespace Singleton.DataBase
         {
             _fileName = fileName;
             _sectionName = sectionName;
-            Connection = new SqlConnection(Connect().ConnectionString); 
+            Connection = new SqlConnection(new AppSettings(fileName, sectionName).ConnectionString); 
             try
             {
                 Connection.Open();
             }
             catch (SqlException ex)
             {
-                throw new System.Exception(ex.Message);
+                throw new Exception(ex.Message);
             }
-        }
-
-        private AppSettings Connect()
-        {
-            IConfigurationBuilder builder = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile(_fileName, optional: false, reloadOnChange: true);
-            IConfigurationRoot configuration = builder.Build();
-            var settings = configuration.GetSection(_sectionName).Get<AppSettings>();
-            return settings;
         }
 
         public static DbConnection GetInstance(string fileName, string sectionName)

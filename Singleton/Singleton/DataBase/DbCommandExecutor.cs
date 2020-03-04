@@ -2,20 +2,20 @@
 
 namespace Singleton.DataBase
 {
-    class DbCommandExecutor
+    internal class DbCommandExecutor
     {
-        private readonly DbConnection _dataBase;
+        private readonly DbConnection _dbConnection;
 
         public DbCommandExecutor(DbConnection db)
         {
-            _dataBase = db;
-        }
+            _dbConnection = db;
+        }   
 
-        public void CreateCommand(string queryString)
+        public void ExecuteCommand(string queryString)
         {
             try
             {
-                SqlCommand command = new SqlCommand(queryString, _dataBase.Connection);
+                SqlCommand command = new SqlCommand(queryString, _dbConnection.Connection);
                 command.ExecuteNonQuery();
             }
             catch (SqlException ex)

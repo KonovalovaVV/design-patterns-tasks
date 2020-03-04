@@ -2,7 +2,7 @@
 
 namespace Singleton
 {
-    class Program
+    internal class Program
     {
         static void Main(string[] args)
         {
@@ -10,7 +10,7 @@ namespace Singleton
             {
                 DbConnection dataBase = DbConnection.GetInstance("AppSettings.json", "Settings");
                 DbCommandExecutor commandExecutor = new DbCommandExecutor(dataBase);
-                commandExecutor.CreateCommand("INSERT INTO Users (Name, Age) VALUES ('Tom', 18)");
+                commandExecutor.ExecuteCommand("INSERT INTO Users (Name, Age) VALUES ('Tom', 18)");
             }
             catch (System.Exception ex)
             {
