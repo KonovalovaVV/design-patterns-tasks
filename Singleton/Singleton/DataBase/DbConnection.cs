@@ -6,18 +6,12 @@ namespace Singleton.DataBase
     internal class DbConnection
     {
         private static readonly Lazy<DbConnection> Instance = 
-            new Lazy<DbConnection>(() => new DbConnection(_tempFileName, _tempSectionName) );
-        private readonly string _fileName;
-        private readonly string _sectionName;
-        private static string _tempFileName;
-        private static string _tempSectionName;
+            new Lazy<DbConnection>(() => new DbConnection() );
         public readonly SqlConnection Connection;
 
-        private DbConnection(string fileName, string sectionName)
+        private DbConnection()
         {
-            _fileName = fileName;
-            _sectionName = sectionName;
-            Connection = new SqlConnection(new AppSettings(fileName, sectionName).ConnectionString); 
+            Connection = new SqlConnection(AppSettingsProvider.GetInstance().Settings.ConnectionString); 
             try
             {
                 Connection.Open();
@@ -28,12 +22,9 @@ namespace Singleton.DataBase
             }
         }
 
-        public static DbConnection GetInstance(string fileName, string sectionName)
+        public static DbConnection GetInstance()
         {
-            _tempFileName = fileName;
-            _tempSectionName = sectionName;
             return Instance.Value;
         }
-        
     }
 }

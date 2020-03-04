@@ -8,7 +8,7 @@ namespace Singleton
         {
             try
             {
-                DbConnection dataBase = DbConnection.GetInstance("AppSettings.json", "Settings");
+                DbConnection dataBase = DbConnection.GetInstance();
                 DbCommandExecutor commandExecutor = new DbCommandExecutor(dataBase);
                 commandExecutor.ExecuteCommand("INSERT INTO Users (Name, Age) VALUES ('Tom', 18)");
             }
