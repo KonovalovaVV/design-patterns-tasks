@@ -1,4 +1,4 @@
-﻿namespace Singleton.DataBase
+﻿namespace Singleton.AppSettings
 {
     internal class AppSettings
     {

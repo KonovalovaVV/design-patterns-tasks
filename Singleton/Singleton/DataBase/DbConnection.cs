@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data.SqlClient;
+using Singleton.AppSettings;
 
 namespace Singleton.DataBase
 {
