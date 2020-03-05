@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Xml;
 using System.Collections.Generic;
+using System.IO;
+using System.Xml.Serialization;
 
 namespace Adapter
 {
     public class Library: IXmlBookList
     {
         private const string FileName = "Books.xml";
-        public List<Book> Books { get; set; }
+        public List<XMLBook> Books { get; set; }
 
         public Library()
         {
@@ -18,49 +20,26 @@ namespace Adapter
 
         private void ReadBooks(XmlDocument document)
         {
-            Books = new List<Book>();
+            Books = new List<XMLBook>();
             XmlElement root = document.DocumentElement;
-            foreach (XmlNode node in root)
+            XmlSerializer formatter = new XmlSerializer(typeof(XMLBook));
+            using (FileStream fs = new FileStream(FileName, FileMode.OpenOrCreate))
             {
-                Books.Add(GetBook(node));
+                Books = (List<XMLBook>)formatter.Deserialize(fs);
             }
         }
 
-        private Book GetBook(XmlNode node)
+        private XMLBook GetBook(XmlNode node, XmlSerializer formatter)
         {
-            Book book = new Book();
-            if (node.Attributes.Count > 0)
+            XMLBook book;
+            using (FileStream fs = new FileStream(FileName, FileMode.OpenOrCreate))
             {
-                XmlNode attr = node.Attributes.GetNamedItem("id");
-                if (attr != null)
-                    book.Id = attr.Value;
+                book = (XMLBook)formatter.Deserialize(fs);
             }
-            foreach (XmlNode childnode in node.ChildNodes)
-            {
-                switch (childnode.Name)
-                {
-                    case "author":
-                        book.AuthorName = childnode.InnerText;
-                        break;
-                    case "title":
-                        book.Title = childnode.InnerText;
-                        break;
-                    case "price":
-                        book.Price = Double.Parse(childnode.InnerText);
-                        break;
-                    case "publish_date":
-                        book.PublishDate = DateTime.Parse(childnode.InnerText);
-                        break;
-                    case "description":
-                        book.Description = childnode.InnerText;
-                        break;
-                }
-            }
-
             return book;
         }
 
-        public List<Book> GetBookXML()
+        public List<XMLBook> GetBookXML()
         {
             return Books;
         }

@@ -4,6 +4,6 @@ namespace Adapter
 {
     internal interface IXmlBookList
     {
-        public List<Book> Books { get; set; }
+        public List<XMLBook> Books { get; set; }
     }
 }
