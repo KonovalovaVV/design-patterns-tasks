@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
+using Adapter.Book;
 
-namespace Adapter
+namespace Adapter.XMLBookList
 {
-    internal interface IXmlBookList
+    public interface IXmlBookList
     {
         public List<XMLBook> Books { get; set; }
     }

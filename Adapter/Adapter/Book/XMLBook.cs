@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Adapter
+namespace Adapter.Book
 {
     public class XMLBook: IBook
     {

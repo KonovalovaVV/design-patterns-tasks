@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
+using Adapter.Book;
 
-namespace Adapter
+namespace Adapter.JSONBookList
 {
     public interface IJsonBookList
     {

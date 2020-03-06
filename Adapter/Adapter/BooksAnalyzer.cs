@@ -1,4 +1,6 @@
 ﻿using System.Linq;
+using Adapter.Book;
+using Adapter.JSONBookList;
 
 namespace Adapter
 {
