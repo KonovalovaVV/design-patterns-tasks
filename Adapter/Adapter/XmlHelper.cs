@@ -1,5 +1,4 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
@@ -46,10 +45,8 @@ namespace Adapter
         }
 
         public static void SerializeToXmlFile<T>(T xmlObject, string filename, bool useNamespaces = true)
-        {
-            
-                File.WriteAllText(filename, SerializeToXmlString<T>(xmlObject, useNamespaces));
-           
+        { 
+            File.WriteAllText(filename, SerializeToXmlString<T>(xmlObject, useNamespaces));
         }
     }
 }    
