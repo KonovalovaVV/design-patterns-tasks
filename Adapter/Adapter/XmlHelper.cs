@@ -9,16 +9,16 @@ namespace Adapter
     {
         public static T DeserializeFromFile<T>(string filename) where T : class, new()
         {
-            T books;
-            XmlDocument document = new XmlDocument();
-            document.Load(filename);
-            XmlSerializer formatter = new XmlSerializer(typeof(XmlBook));
-            using (FileStream fs = new FileStream(filename, FileMode.OpenOrCreate))
-            {
-                books = (T)formatter.Deserialize(fs);
-            }
-
-            return books;
+            return DeserializeFromXmlString<T>(File.ReadAllText(filename));
+        }
+        public static T DeserializeFromXmlString<T>(string xml) where T : new()
+        {
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(T));
+            StringReader stringReader = new StringReader(xml);
+            var xmlObject = (T)xmlSerializer.Deserialize(stringReader);
+            return xmlObject;
         }
     }
 }
+//
+//<catalog xmlns = "urn:oasis:names:tc:entity:xmlns:xml:catalog" >
