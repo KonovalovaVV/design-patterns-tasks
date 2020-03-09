@@ -1,7 +1,7 @@
-﻿using Adapter.XMLBookList;
-using Adapter.Book;
-using Adapter.JSONBookList;
- 
+﻿using Adapter.Book;
+using Adapter.JsonBookList;
+using Adapter.XMLBookList;
+
 namespace Adapter
 {
     public class XmlBookAnalyzerAdapter 
@@ -16,23 +16,23 @@ namespace Adapter
         public JsonBook GetOldestBook(IXmlBookList list)
         {
             var jsonBookList = ConvertXmlToJsonList(list);
-            var result = _analyzer.GetOldestBook(jsonBookList);
-
-            return result;
+            return  _analyzer.GetOldestBook(jsonBookList);
         }
 
         private IJsonBookList ConvertXmlToJsonList(IXmlBookList list)
         {
-            IJsonBookList jsonBooks = new JsonBookList();
-            foreach (XMLBook xmlBook in list.Books)
+            IJsonBookList jsonBooks = new JsonBookList.JsonBookList();
+            foreach (XmlBook xmlBook in list.Books)
             {
-                JsonBook jb = new JsonBook();
-                jb.AuthorName = xmlBook.AuthorName;
-                jb.Id = xmlBook.Id;
-                jb.Price = xmlBook.Price;
-                jb.PublishDate = xmlBook.PublishDate;
-                jb.Description = xmlBook.Description;
-                jb.Title = xmlBook.Title;
+                JsonBook jb = new JsonBook
+                {
+                    AuthorName = xmlBook.AuthorName,
+                    Id = xmlBook.Id,
+                    Price = xmlBook.Price,
+                    PublishDate = xmlBook.PublishDate,
+                    Description = xmlBook.Description,
+                    Title = xmlBook.Title
+                };
                 jsonBooks.Books.Add(jb);
             }
 

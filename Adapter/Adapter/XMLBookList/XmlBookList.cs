@@ -5,6 +5,6 @@ namespace Adapter.XMLBookList
 {
     public class XmlBookList : IXmlBookList
     {
-        public List<XMLBook> Books { get; set; }
+        public List<XmlBook> Books { get; set; }
     }
 }

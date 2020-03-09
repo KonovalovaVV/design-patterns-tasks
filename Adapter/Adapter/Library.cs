@@ -1,8 +1,4 @@
-﻿using System.Xml;
-using Adapter.XMLBookList;
-using Adapter.Book;
-using System.IO;
-using System.Xml.Serialization;
+﻿using Adapter.XMLBookList;
 
 namespace Adapter
 {
@@ -10,19 +6,9 @@ namespace Adapter
     {
         private const string FileName = "Books.xml";
 
-        public IXmlBookList GetBooksXML()
+        public static IXmlBookList GetBooksXml()
         {
-            IXmlBookList books = new XmlBookList();
-            XmlDocument document = new XmlDocument();
-            document.Load(FileName);
-            XmlElement root = document.DocumentElement;
-            XmlSerializer formatter = new XmlSerializer(typeof(XMLBook));
-            using (FileStream fs = new FileStream(FileName, FileMode.OpenOrCreate))
-            {
-                books = (XmlBookList)formatter.Deserialize(fs);
-            }
-
-            return books;
+            return XmlHelper.DeserializeFromFile(FileName);
         }
     }
 }
