@@ -2,7 +2,7 @@
 
 namespace Adapter.Book
 {
-    public class XmlBook: IBook
+    public class XMLBook: IBook
     {
         public string Id { get; set; }
         public string AuthorName { get; set; }
@@ -13,7 +13,7 @@ namespace Adapter.Book
 
         public override string ToString()
         {
-            return $"ID:{this.Id} \nAuthor name: {this.AuthorName} \nTitle: {this.Title} \nPrice: {this.Price} \nPublish date: {this.PublishDate} \nDescription: {this.Description}";
+            return $"ID: {this.Id} \nAuthor name: {this.AuthorName} \nTitle: {this.Title} \nPrice: {this.Price} \nPublish date: {this.PublishDate} \nDescription: {this.Description}";
         }
-    }
+}
 }
