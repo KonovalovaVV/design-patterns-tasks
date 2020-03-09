@@ -2,13 +2,9 @@
 {
     public class Client
     {
-        public void ClientCode(IYesterdayRate subject)
+        public double ClientCode(IYesterdayRate subject, string currency)
         {
-            // ...
-
-            subject.GetRate();
-
-            // ...
+            return subject.GetRate(currency);
         }
     }
 }

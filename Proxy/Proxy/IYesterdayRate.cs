@@ -2,6 +2,6 @@
 {
     public interface IYesterdayRate
     {
-        public Rate GetRate();
+        public double GetRate(string currency);
     }
 }
