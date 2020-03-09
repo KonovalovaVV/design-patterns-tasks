@@ -11,4 +11,10 @@
     <PackageReference Include="System.Security.Permissions" Version="4.0.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Books.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

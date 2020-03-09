@@ -5,7 +5,7 @@ namespace Adapter
 {
     public class Library
     {
-        private static string FileName = Directory.GetCurrentDirectory() + "Books.xml";
+        private static readonly string FileName = Directory.GetCurrentDirectory() + "Books.xml";
 
         public static IXmlBookList GetBooksXml()
         {
