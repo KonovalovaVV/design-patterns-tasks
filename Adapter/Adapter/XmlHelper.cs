@@ -2,22 +2,20 @@
 using System.Xml;
 using System.Xml.Serialization;
 using Adapter.Book;
-using Adapter.XMLBookList;
 
 namespace Adapter
 {
     public static class XmlHelper
     {
-        public static IXmlBookList DeserializeFromFile(string filename)
+        public static T DeserializeFromFile<T>(string filename) where T : class, new()
         {
-            IXmlBookList books = new XmlBookList();
+            T books;
             XmlDocument document = new XmlDocument();
             document.Load(filename);
-            XmlElement root = document.DocumentElement;
             XmlSerializer formatter = new XmlSerializer(typeof(XmlBook));
             using (FileStream fs = new FileStream(filename, FileMode.OpenOrCreate))
             {
-                books = (XmlBookList)formatter.Deserialize(fs);
+                books = (T)formatter.Deserialize(fs);
             }
 
             return books;

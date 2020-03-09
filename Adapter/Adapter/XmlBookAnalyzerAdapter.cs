@@ -1,6 +1,6 @@
 ﻿using Adapter.Book;
 using Adapter.JsonBookList;
-using Adapter.XMLBookList;
+using Adapter.XmlBookList;
 
 namespace Adapter
 {

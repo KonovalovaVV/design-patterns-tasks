@@ -1,4 +1,4 @@
-﻿using Adapter.XMLBookList;
+﻿using Adapter.XmlBookList;
 
 namespace Adapter
 {
@@ -8,7 +8,7 @@ namespace Adapter
 
         public static IXmlBookList GetBooksXml()
         {
-            return XmlHelper.DeserializeFromFile(FileName);
+            return XmlHelper.DeserializeFromFile<XmlBookList.XmlBookList>(FileName);
         }
     }
 }
