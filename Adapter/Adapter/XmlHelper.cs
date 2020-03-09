@@ -32,7 +32,9 @@ namespace Adapter
                 xmlSerializer.Serialize(xmlTextWriter, xmlObject, xmlSerializerNamespaces);
             }
             else
+            {
                 xmlSerializer.Serialize(xmlTextWriter, xmlObject);
+            }
 
             string output = Encoding.UTF8.GetString(memoryStream.ToArray());
             string byteOrderMarkUtf8 = Encoding.UTF8.GetString(Encoding.UTF8.GetPreamble());

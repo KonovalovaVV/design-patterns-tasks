@@ -1,10 +1,11 @@
-﻿using Adapter.XmlBookList;
+﻿using System.IO;
+using Adapter.XmlBookList;
 
 namespace Adapter
 {
     public class Library
     {
-        private const string FileName = "D:\\design patterns module\\design-patterns-tasks\\Adapter\\Adapter\\Books.xml";
+        private static string FileName = Directory.GetCurrentDirectory() + "Books.xml";
 
         public static IXmlBookList GetBooksXml()
         {
