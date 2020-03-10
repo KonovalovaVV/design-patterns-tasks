@@ -4,12 +4,7 @@ namespace Facade.Codec
 {
     public class OGGCodec: ICodec
     {
-        public string Format { get; }
-
-        public OGGCodec()
-        {
-            Format = ".ogg";
-        }
+        public const string Format = "oog";
 
         public List<int> Compress(VideoFile videoFile)
         {
@@ -18,7 +13,7 @@ namespace Facade.Codec
 
         public VideoFile Decompress(string filename, List<int> pixels)
         {
-            return new VideoFile(filename);
+            return new VideoFile(filename, this);
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using Facade.Codec;
+﻿using Facade.Codec;
 
 namespace Facade
 {
@@ -7,8 +6,6 @@ namespace Facade
     {
         public VideoFile Convert(VideoFile videoFile, ICodec codec)
         {
-            videoFile.FileName = videoFile.FileName.Remove(videoFile.FileName.Length - videoFile.Codec.Format.Length);
-            videoFile.FileName += codec.Format;
             videoFile.Codec = codec;
             return videoFile;
         }

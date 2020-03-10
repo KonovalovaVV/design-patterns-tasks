@@ -7,17 +7,17 @@ namespace Facade
     {
         public static void Main(string[] args)
         {
-            VideoFile videoFile = new VideoFile("video.oog");
+            VideoFile videoFile = new VideoFile("video", new OGGCodec());
             ICodec codec = new MPEG4Codec();
             VideoConverter videoConverter = new VideoConverter();
             VideoFile convertedVideoFile = videoConverter.Convert(videoFile, codec);
             Console.WriteLine("Converting using VideoConverter: ");
-            Console.WriteLine(convertedVideoFile.FileName);
+            Console.WriteLine(convertedVideoFile.Codec);
 
             SimpleConverter simpleConverter = new SimpleConverter();
-            VideoFile simpleConvertedVideoFile = simpleConverter.Convert("video.oog", ".mpeg4");
+            VideoFile simpleConvertedVideoFile = simpleConverter.Convert("video", "mpeg4");
             Console.WriteLine("Converting using SimpleConverter: ");
-            Console.WriteLine(simpleConvertedVideoFile.FileName);
+            Console.WriteLine(simpleConvertedVideoFile.Codec);
         }
     }
 }

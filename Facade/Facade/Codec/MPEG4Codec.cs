@@ -4,12 +4,7 @@ namespace Facade.Codec
 {
     public class MPEG4Codec: ICodec
     {
-        public string Format { get; }
-
-        public MPEG4Codec()
-        {
-            Format = ".mpeg4";
-        }
+        public const string Format = "mpeg4";
 
         public List<int> Compress(VideoFile videoFile)
         {
@@ -18,7 +13,7 @@ namespace Facade.Codec
 
         public VideoFile Decompress(string filename, List<int> pixels)
         {
-            return new VideoFile(filename);
+            return new VideoFile(filename,this);
         }
     }
 }

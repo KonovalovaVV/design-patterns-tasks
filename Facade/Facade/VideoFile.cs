@@ -7,14 +7,10 @@ namespace Facade
         public string FileName;
         public ICodec Codec { get; set; } 
 
-        public VideoFile(string fileName)
+        public VideoFile(string fileName, ICodec codec)
         {
             FileName = fileName;
-
-            if(fileName.EndsWith(".mpeg4"))
-                Codec = new MPEG4Codec();
-            if(fileName.EndsWith(".oog"))
-                Codec = new OGGCodec();
+            Codec = codec;
         }
     }
 }
