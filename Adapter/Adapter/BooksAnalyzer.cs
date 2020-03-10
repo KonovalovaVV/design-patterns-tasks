@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 using Adapter.Book;
-using Adapter.JSONBookList;
+using Adapter.JsonBookList;
 
 namespace Adapter
 {
@@ -9,7 +9,7 @@ namespace Adapter
         public JsonBook GetOldestBook(IJsonBookList list)
         {
             return list.Books
-                .OrderByDescending(b => b.PublishDate)
+                .OrderBy(b => b.PublishDate)
                 .FirstOrDefault(); 
         }
     }

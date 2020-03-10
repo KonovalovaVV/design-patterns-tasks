@@ -2,7 +2,7 @@
 
 namespace Adapter.Book
 {
-    public class XMLBook: IBook
+    public class XmlBook: IBook
     {
         public string Id { get; set; }
         public string AuthorName { get; set; }
