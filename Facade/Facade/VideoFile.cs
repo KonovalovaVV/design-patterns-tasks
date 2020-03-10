@@ -1,16 +1,12 @@
-﻿using Facade.Codec;
-
-namespace Facade
+﻿namespace Facade
 {
     public class VideoFile
     {
-        public string FileName;
-        public ICodec Codec { get; set; } 
+        public readonly string FileName;
 
-        public VideoFile(string fileName, ICodec codec)
+        public VideoFile(string fileName)
         {
             FileName = fileName;
-            Codec = codec;
         }
     }
 }

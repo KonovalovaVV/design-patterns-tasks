@@ -5,12 +5,11 @@ namespace Facade
 {
     public class SimpleConverter
     {
-        public readonly VideoConverter videoConverter = new VideoConverter();
+        private readonly VideoConverter _videoConverter = new VideoConverter();
 
         public VideoFile Convert(string filename, string format)
         {
-            VideoFile videoFile = new VideoFile(filename, GetCodec(format));
-            return videoConverter.Convert(videoFile, videoFile.Codec);
+            return _videoConverter.Convert(new VideoFile(filename), GetCodec(format));
         }
 
         private ICodec GetCodec(string format)
