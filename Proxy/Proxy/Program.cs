@@ -6,24 +6,24 @@ namespace Proxy
     {
         static void Main(string[] args)
         {
-            Client client = new Client();
+            YesterdayRate realSubject = new YesterdayRate();
+            ProxyYesterdayRate proxy = new ProxyYesterdayRate(realSubject);
+            Client realClient = new Client(realSubject);
+            Client proxyClient = new Client(proxy);
             string currency = "euro";
 
             Console.WriteLine("Client: Executing the client code with a real subject:");
-            YesterdayRate realSubject = new YesterdayRate();
-            Console.WriteLine("{0} exchange rate is {1}", currency, client.ClientCode(realSubject, currency));
+            Console.WriteLine("{0} exchange rate is {1}", currency, realClient.GetCurrencyRate(currency));
 
             Console.WriteLine();
 
             Console.WriteLine("Client: Executing the same client code with a proxy:");
-            ProxyYesterdayRate proxy = new ProxyYesterdayRate(realSubject);
-            Console.WriteLine("{0} exchange rate is {1}", currency, client.ClientCode(proxy, currency));
-
+            Console.WriteLine("{0} exchange rate is {1}", currency, proxyClient.GetCurrencyRate(currency));
 
             Console.WriteLine();
 
             Console.WriteLine("Client: Executing the same client code with a proxy for the second time:");
-            Console.WriteLine("{0} exchange rate is {1}", currency, client.ClientCode(proxy, currency));
+            Console.WriteLine("{0} exchange rate is {1}", currency, proxyClient.GetCurrencyRate(currency));
 
         }
     }

@@ -5,19 +5,19 @@ namespace Proxy
     public class ProxyYesterdayRate: IYesterdayRate
     {
         private readonly YesterdayRate _yesterdayRate;
-        private readonly Dictionary<string, double> Rates = new Dictionary<string, double>();
+        private readonly Dictionary<string, double> _rates = new Dictionary<string, double>();
 
         public double GetRate(string currency)
         {
-            if (Rates.ContainsKey(currency))
+            if (_rates.TryGetValue(currency, out double value))
             {
-                return Rates[currency];
+                return value;
             }
-            else
-            {
-               double rate =  _yesterdayRate.GetRate(currency);
-               Rates.Add(currency, rate);
-               return rate;
+            else 
+            { 
+               value =  _yesterdayRate.GetRate(currency);
+               _rates.Add(currency, value);
+               return value;
             }
         }
 

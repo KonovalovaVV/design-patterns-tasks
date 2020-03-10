@@ -2,9 +2,16 @@
 {
     public class Client
     {
-        public double ClientCode(IYesterdayRate subject, string currency)
+        private readonly IYesterdayRate _yesterdayRate;
+
+        public Client(IYesterdayRate yesterdayRate)
         {
-            return subject.GetRate(currency);
+            _yesterdayRate = yesterdayRate;
+        }
+
+        public double GetCurrencyRate(string currency)
+        {
+            return _yesterdayRate.GetRate(currency);
         }
     }
 }
