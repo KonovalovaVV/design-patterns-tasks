@@ -1,34 +1,29 @@
-﻿namespace Proxy
+﻿using System.Collections.Generic;
+
+namespace Proxy
 {
     public class ProxyYesterdayRate: IYesterdayRate
     {
-        private YesterdayRate yesterdayRate;
-        public Rate GetRate()
-        {
-            if (this.CheckAccess())
-            {
-                yesterdayRate = new YesterdayRate();
-                yesterdayRate.GetRate();
+        private readonly YesterdayRate _yesterdayRate;
+        private readonly Dictionary<string, double> Rates = new Dictionary<string, double>();
 
-                LogAccess();
+        public double GetRate(string currency)
+        {
+            if (Rates.ContainsKey(currency))
+            {
+                return Rates[currency];
             }
-            return new Rate();
+            else
+            {
+               double rate =  _yesterdayRate.GetRate(currency);
+               Rates.Add(currency, rate);
+               return rate;
+            }
         }
 
         public ProxyYesterdayRate(YesterdayRate yesterdayRate)
         {
-            this.yesterdayRate = yesterdayRate;
-        }
-
-        public bool CheckAccess()
-        {
-            //Proxy: Checking access prior to firing a real request
-            return true;
-        }
-
-        public void LogAccess()
-        {
-            // Proxy: Logging the time of request
+            this._yesterdayRate = yesterdayRate;
         }
     }
 }
