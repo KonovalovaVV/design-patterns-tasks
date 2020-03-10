@@ -17,12 +17,9 @@ namespace Proxy
 
         public double GetRate(string currency)
         {
-            if(_rates.ContainsKey(currency))
-                return _rates[currency];
-            else
-            {
-                throw new Exception("Invalid currency");
-            }
+            if(_rates.TryGetValue(currency, out double rate))
+                return rate;
+            throw new Exception("Invalid currency");
         }
     }
 }
