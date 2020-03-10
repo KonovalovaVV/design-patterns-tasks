@@ -1,28 +1,20 @@
-﻿using System.Xml;
-using Adapter.XMLBookList;
-using Adapter.Book;
-using System.IO;
-using System.Xml.Serialization;
+﻿using System.IO;
+using Adapter.XmlBookList;
 
 namespace Adapter
 {
     public class Library
     {
-        private const string FileName = "Books.xml";
+        private static readonly string FileName = Directory.GetCurrentDirectory() + "Books.xml";
 
-        public IXmlBookList GetBooksXML()
+        public static IXmlBookList GetBooksXml()
         {
-            IXmlBookList books = new XmlBookList();
-            XmlDocument document = new XmlDocument();
-            document.Load(FileName);
-            XmlElement root = document.DocumentElement;
-            XmlSerializer formatter = new XmlSerializer(typeof(XMLBook));
-            using (FileStream fs = new FileStream(FileName, FileMode.OpenOrCreate))
-            {
-                books = (XmlBookList)formatter.Deserialize(fs);
-            }
+            return XmlHelper.DeserializeFromFile<XmlBookList.XmlBookList>(FileName);
+        }
 
-            return books;
+        public static void SetBookList(IXmlBookList list)
+        {
+            XmlHelper.SerializeToXmlFile((XmlBookList.XmlBookList)list, FileName, true);
         }
     }
 }
